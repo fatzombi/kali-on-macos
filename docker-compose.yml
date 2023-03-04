@@ -1,0 +1,26 @@
+version: "3.7"
+
+services:
+  kali-on-macos:
+    build:
+      context: .
+      args:
+        USERNAME: ${USERNAME}
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
+    container_name: $CONTAINER_NAME
+    restart: unless-stopped
+    hostname: $CONTAINER_NAME
+    environment:
+      - DISPLAY=host.docker.internal:0
+      - TERM=xterm-256color
+    ports:
+      - 4445:4445 # For some shells
+      - 16801:16801 # For some more shells
+    volumes:
+      - "./data:/home/${USERNAME}/"
+    cap_add:
+      - NET_ADMIN
+      - SYS_ADMIN
+    devices:
+      - /dev/net/tun:/dev/net/tun
