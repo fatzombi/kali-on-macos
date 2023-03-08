@@ -10,6 +10,7 @@ RUN apt update; apt -y dist-upgrade
 
 # Install anything and everything we desire.
 RUN apt-get -y install \
+bc \
 burpsuite \
 crackmapexec \
 curl \
