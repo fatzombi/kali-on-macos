@@ -19,7 +19,7 @@ services:
       - 4445:4445 # For some shells
       - 16801:16801 # For some more shells
     volumes:
-      - "./data:/home/${USERNAME}/"
+      - "./data:/home/${USERNAME}/data"
     cap_add:
       - NET_ADMIN
       - SYS_ADMIN
